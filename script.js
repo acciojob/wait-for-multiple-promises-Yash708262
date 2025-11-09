@@ -1,14 +1,14 @@
-//your JS code here. If required.
 const output = document.getElementById("output");
 
-// Step 1: Show initial "Loading..." row
+// Step 1: Show initial "Loading..." row with id
 const loadingRow = document.createElement("tr");
+loadingRow.id = "loading"; // <-- add this
 loadingRow.innerHTML = `<td colspan="2" class="text-center">Loading...</td>`;
 output.appendChild(loadingRow);
 
 // Utility function to generate a random delay between 1 and 3 seconds
 function randomDelay() {
-  return Math.random() * 2000 + 1000; // in milliseconds
+  return Math.random() * 2000 + 1000; // milliseconds
 }
 
 // Utility function to create a promise that resolves after randomDelay
@@ -43,7 +43,7 @@ Promise.all(promises).then((results) => {
     output.appendChild(row);
   });
 
-  // Calculate total (max of all times)
+  // Add total row (max time)
   const totalTime = Math.max(...results.map((r) => r.timeTaken)).toFixed(3);
   const totalRow = document.createElement("tr");
   totalRow.innerHTML = `<td>Total</td><td>${totalTime}</td>`;
